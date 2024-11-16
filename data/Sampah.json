@@ -1,0 +1,82 @@
+[
+  {
+    "sampah_id": 1,
+    "nama_sampah": "Kertas HVS",
+    "harga_sekarang": 1500,
+    "jenis_sampah": "Kertas",
+    "nama_suk": "rim",
+    "slug_image": "/images/kertas-hvs.jpg"
+  },
+  {
+    "sampah_id": 2,
+    "nama_sampah": "Botol Plastik",
+    "harga_sekarang": 2000,
+    "jenis_sampah": "Plastik",
+    "nama_suk": "kg",
+    "slug_image": "/images/botol-plastik.jpg"
+  },
+  {
+    "sampah_id": 3,
+    "nama_sampah": "Kaleng Minuman",
+    "harga_sekarang": 3000,
+    "jenis_sampah": "Logam",
+    "nama_suk": "buah",
+    "slug_image": "/images/kaleng-minuman.jpg"
+  },
+  {
+    "sampah_id": 4,
+    "nama_sampah": "Kardus Bekas",
+    "harga_sekarang": 1200,
+    "jenis_sampah": "Kertas",
+    "nama_suk": "kg",
+    "slug_image": "/images/kardus-bekas.jpg"
+  },
+  {
+    "sampah_id": 5,
+    "nama_sampah": "Botol Kaca",
+    "harga_sekarang": 2500,
+    "jenis_sampah": "Kaca",
+    "nama_suk": "buah",
+    "slug_image": "/images/botol-kaca.jpg"
+  },
+  {
+    "sampah_id": 6,
+    "nama_sampah": "Plastik Kresek",
+    "harga_sekarang": 800,
+    "jenis_sampah": "Plastik",
+    "nama_suk": "gram",
+    "slug_image": "/images/plastik-kresek.jpg"
+  },
+  {
+    "sampah_id": 7,
+    "nama_sampah": "Tutup Botol Plastik",
+    "harga_sekarang": 1000,
+    "jenis_sampah": "Plastik",
+    "nama_suk": "buah",
+    "slug_image": "/images/tutup-botol-plastik.jpg"
+  },
+  {
+    "sampah_id": 8,
+    "nama_sampah": "Besi Bekas",
+    "harga_sekarang": 4000,
+    "jenis_sampah": "Logam",
+    "nama_suk": "kg",
+    "slug_image": "/images/besi-bekas.jpg"
+  },
+  {
+    "sampah_id": 9,
+    "nama_sampah": "Kabel Tembaga",
+    "harga_sekarang": 5000,
+    "jenis_sampah": "Logam",
+    "nama_suk": "meter",
+    "slug_image": "/images/kabel-tembaga.jpg"
+  },
+  {
+    "sampah_id": 10,
+    "nama_sampah": "Styrofoam",
+    "harga_sekarang": 600,
+    "jenis_sampah": "Plastik",
+    "nama_suk": "gram",
+    "slug_image": "/images/styrofoam.jpg"
+  }
+]
