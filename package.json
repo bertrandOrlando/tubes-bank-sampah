@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@emotion/cache": "^11.13.1",
+    "@emotion/styled": "^11.13.0",
     "@mui/material-nextjs": "^6.1.7",
+    "@mui/x-date-pickers": "^7.22.2",
     "@nextui-org/link": "^2.0.35",
     "@nextui-org/react": "^2.4.8",
     "@nextui-org/system": "^2.2.6",
+    "dayjs": "^1.11.13",
     "framer-motion": "^11.11.17",
     "next": "14.2.18",
     "react": "^18",
