@@ -4,11 +4,14 @@ export type TransaksiTypes = {
   tanggal_masuk: string;
   status_terkirim: boolean;
   tanggal_keluar: string;
+  total_transaksi: number;
+  item_sampah: TransaksiSampahTypes[];
 };
 
-export type Transaksi_Sampah = {
-  transaksi_id: number;
-  sampah_id: number;
+export type TransaksiSampahTypes = {
+  nama_sampah: string;
   jumlah_sampah: number;
   harga_sampah: number;
-} & TransaksiTypes;
+  nama_suk: string;
+  subtotal: number;
+};
