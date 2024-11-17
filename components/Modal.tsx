@@ -33,6 +33,7 @@ const ModalComponent = (props: TransaksiTypes) => {
         ...item,
         key: index + 1,
         harga_sampah: formatRupiah(item.harga_sampah) + "/" + item.nama_suk,
+        subtotal: formatRupiah(item.subtotal),
       };
     }
   );
