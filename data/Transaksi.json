@@ -1,0 +1,284 @@
+[
+  {
+    "transaksi_id": 1,
+    "pengguna_id": 101,
+    "tanggal_masuk": "2024-11-10",
+    "status_terkirim": true,
+    "tanggal_keluar": "2024-11-12",
+    "total_transaksi": 1500000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Kertas Koran",
+        "jumlah_sampah": 50,
+        "harga_sampah": 500,
+        "nama_suk": "kg",
+        "subtotal": 25000
+      },
+      {
+        "nama_sampah": "Botol Plastik",
+        "jumlah_sampah": 100,
+        "harga_sampah": 2000,
+        "nama_suk": "kg",
+        "subtotal": 200000
+      },
+      {
+        "nama_sampah": "Kaleng Aluminium",
+        "jumlah_sampah": 80,
+        "harga_sampah": 3000,
+        "nama_suk": "buah",
+        "subtotal": 240000
+      },
+      {
+        "nama_sampah": "Kardus Bekas",
+        "jumlah_sampah": 60,
+        "harga_sampah": 1200,
+        "nama_suk": "kg",
+        "subtotal": 72000
+      },
+      {
+        "nama_sampah": "Botol Kaca",
+        "jumlah_sampah": 40,
+        "harga_sampah": 2500,
+        "nama_suk": "buah",
+        "subtotal": 100000
+      },
+      {
+        "nama_sampah": "Styrofoam",
+        "jumlah_sampah": 200,
+        "harga_sampah": 600,
+        "nama_suk": "gram",
+        "subtotal": 120000
+      },
+      {
+        "nama_sampah": "Besi Bekas",
+        "jumlah_sampah": 20,
+        "harga_sampah": 4000,
+        "nama_suk": "kg",
+        "subtotal": 80000
+      },
+      {
+        "nama_sampah": "Tutup Botol Plastik",
+        "jumlah_sampah": 150,
+        "harga_sampah": 1000,
+        "nama_suk": "buah",
+        "subtotal": 150000
+      },
+      {
+        "nama_sampah": "Kabel Tembaga",
+        "jumlah_sampah": 25,
+        "harga_sampah": 5000,
+        "nama_suk": "meter",
+        "subtotal": 125000
+      },
+      {
+        "nama_sampah": "Kaleng Minuman",
+        "jumlah_sampah": 70,
+        "harga_sampah": 3000,
+        "nama_suk": "buah",
+        "subtotal": 210000
+      },
+      {
+        "nama_sampah": "Kertas HVS",
+        "jumlah_sampah": 30,
+        "harga_sampah": 1500,
+        "nama_suk": "rim",
+        "subtotal": 45000
+      },
+      {
+        "nama_sampah": "Plastik Kresek",
+        "jumlah_sampah": 300,
+        "harga_sampah": 800,
+        "nama_suk": "gram",
+        "subtotal": 240000
+      },
+      {
+        "nama_sampah": "Buku Bekas",
+        "jumlah_sampah": 15,
+        "harga_sampah": 2000,
+        "nama_suk": "kg",
+        "subtotal": 30000
+      },
+      {
+        "nama_sampah": "Kaset CD Bekas",
+        "jumlah_sampah": 50,
+        "harga_sampah": 1500,
+        "nama_suk": "buah",
+        "subtotal": 75000
+      },
+      {
+        "nama_sampah": "Botol Susu Plastik",
+        "jumlah_sampah": 25,
+        "harga_sampah": 3500,
+        "nama_suk": "buah",
+        "subtotal": 87500
+      }
+    ]
+  },
+  {
+    "transaksi_id": 2,
+    "pengguna_id": 102,
+    "tanggal_masuk": "2024-11-11",
+    "status_terkirim": false,
+    "tanggal_keluar": "2024-11-14",
+    "total_transaksi": 300000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Kaleng Minuman",
+        "jumlah_sampah": 30,
+        "harga_sampah": 3000,
+        "nama_suk": "buah",
+        "subtotal": 90000
+      },
+      {
+        "nama_sampah": "Kardus Bekas",
+        "jumlah_sampah": 50,
+        "harga_sampah": 1200,
+        "nama_suk": "kg",
+        "subtotal": 60000
+      }
+    ]
+  },
+  {
+    "transaksi_id": 3,
+    "pengguna_id": 103,
+    "tanggal_masuk": "2024-11-12",
+    "status_terkirim": true,
+    "tanggal_keluar": "2024-11-13",
+    "total_transaksi": 150000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Botol Kaca",
+        "jumlah_sampah": 15,
+        "harga_sampah": 2500,
+        "nama_suk": "buah",
+        "subtotal": 37500
+      }
+    ]
+  },
+  {
+    "transaksi_id": 4,
+    "pengguna_id": 104,
+    "tanggal_masuk": "2024-11-13",
+    "status_terkirim": false,
+    "tanggal_keluar": "2024-11-15",
+    "total_transaksi": 400000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Plastik Kresek",
+        "jumlah_sampah": 100,
+        "harga_sampah": 800,
+        "nama_suk": "gram",
+        "subtotal": 80000
+      },
+      {
+        "nama_sampah": "Tutup Botol Plastik",
+        "jumlah_sampah": 50,
+        "harga_sampah": 1000,
+        "nama_suk": "buah",
+        "subtotal": 50000
+      }
+    ]
+  },
+  {
+    "transaksi_id": 5,
+    "pengguna_id": 105,
+    "tanggal_masuk": "2024-11-14",
+    "status_terkirim": true,
+    "tanggal_keluar": "2024-11-16",
+    "total_transaksi": 200000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Besi Bekas",
+        "jumlah_sampah": 30,
+        "harga_sampah": 4000,
+        "nama_suk": "kg",
+        "subtotal": 120000
+      }
+    ]
+  },
+  {
+    "transaksi_id": 6,
+    "pengguna_id": 106,
+    "tanggal_masuk": "2024-11-15",
+    "status_terkirim": false,
+    "tanggal_keluar": "2024-11-17",
+    "total_transaksi": 500000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Kabel Tembaga",
+        "jumlah_sampah": 20,
+        "harga_sampah": 5000,
+        "nama_suk": "meter",
+        "subtotal": 100000
+      }
+    ]
+  },
+  {
+    "transaksi_id": 7,
+    "pengguna_id": 107,
+    "tanggal_masuk": "2024-11-16",
+    "status_terkirim": true,
+    "tanggal_keluar": "2024-11-18",
+    "total_transaksi": 350000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Styrofoam",
+        "jumlah_sampah": 200,
+        "harga_sampah": 600,
+        "nama_suk": "gram",
+        "subtotal": 120000
+      }
+    ]
+  },
+  {
+    "transaksi_id": 8,
+    "pengguna_id": 108,
+    "tanggal_masuk": "2024-11-17",
+    "status_terkirim": false,
+    "tanggal_keluar": "2024-11-19",
+    "total_transaksi": 450000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Kertas HVS",
+        "jumlah_sampah": 15,
+        "harga_sampah": 1500,
+        "nama_suk": "rim",
+        "subtotal": 22500
+      }
+    ]
+  },
+  {
+    "transaksi_id": 9,
+    "pengguna_id": 109,
+    "tanggal_masuk": "2024-11-18",
+    "status_terkirim": true,
+    "tanggal_keluar": "2024-11-20",
+    "total_transaksi": 100000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Botol Plastik",
+        "jumlah_sampah": 10,
+        "harga_sampah": 2000,
+        "nama_suk": "kg",
+        "subtotal": 20000
+      }
+    ]
+  },
+  {
+    "transaksi_id": 10,
+    "pengguna_id": 110,
+    "tanggal_masuk": "2024-11-19",
+    "status_terkirim": false,
+    "tanggal_keluar": "2024-11-21",
+    "total_transaksi": 600000,
+    "item_sampah": [
+      {
+        "nama_sampah": "Kaleng Minuman",
+        "jumlah_sampah": 100,
+        "harga_sampah": 3000,
+        "nama_suk": "buah",
+        "subtotal": 300000
+      }
+    ]
+  }
+]
