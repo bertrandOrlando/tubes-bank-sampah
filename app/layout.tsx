@@ -3,8 +3,8 @@ import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import NavBarWrapper from "@/components/NavBarWrapper";
 
 const notoSans = Noto_Sans({ subsets: ["latin"] });
 
@@ -23,8 +23,8 @@ export default function RootLayout({
       <body className={`${notoSans.className} `}>
         <AppRouterCacheProvider>
           <NextUIProvider>
-            <NavBar />
-            <div className="min-h-96 pt-20">{children}</div>
+            <NavBarWrapper />
+            {children}
             <Footer />
           </NextUIProvider>
         </AppRouterCacheProvider>
