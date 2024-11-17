@@ -61,10 +61,10 @@ const RiwayatTransaksi = () => {
   ];
 
   return (
-    <div className="p-8 flex flex-col items-center justify-center gap-y-6">
-      <h1 className="font-bold text-3xl my-4 ">Riwayat Transaksi</h1>
-      <div className="flex flex-row justify-evenly gap-12 ">
-        <div className="flex flex-col justify-between items-center">
+    <div className="flex flex-col items-center justify-center gap-y-6 p-8">
+      <h1 className="my-4 text-3xl font-bold">Riwayat Transaksi</h1>
+      <div className="flex flex-row justify-evenly gap-12">
+        <div className="flex flex-col items-center justify-between">
           <Checkbox isSelected={filterStart} onValueChange={setFilterStart}>
             Filter awal transaksi
           </Checkbox>
@@ -76,7 +76,7 @@ const RiwayatTransaksi = () => {
             isDisabled={!filterStart}
           />
         </div>
-        <div className="flex flex-col justify-center items-center gap-5">
+        <div className="flex flex-col items-center justify-center gap-5">
           <Checkbox isSelected={filterEnd} onValueChange={setFilterEnd}>
             Filter akhir transaksi
           </Checkbox>
