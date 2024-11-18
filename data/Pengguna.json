@@ -1,0 +1,102 @@
+[
+  {
+    "pengguna_id": 1,
+    "nama": "Asep",
+    "no_telp": "089123456789",
+    "alamat": "Jalan Ciumbuleuit No. 94",
+    "email": "asep123@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Sukahaji",
+    "kecamatan": "Babakan Ciparay"
+  },
+  {
+    "pengguna_id": 2,
+    "nama": "Budi",
+    "no_telp": "081234567890",
+    "alamat": "Jalan Maleber No. 23",
+    "email": "budi456@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Maleber",
+    "kecamatan": "Andir"
+  },
+  {
+    "pengguna_id": 3,
+    "nama": "Citra",
+    "no_telp": "087654321098",
+    "alamat": "Jalan Dunguscariang No. 11",
+    "email": "citra789@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Dunguscariang",
+    "kecamatan": "Andir"
+  },
+  {
+    "pengguna_id": 4,
+    "nama": "Deni",
+    "no_telp": "081298765432",
+    "alamat": "Jalan Cisaranten Wetan No. 88",
+    "email": "deni123@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Cisaranten Wetan",
+    "kecamatan": "Arcamanik"
+  },
+  {
+    "pengguna_id": 5,
+    "nama": "Eka",
+    "no_telp": "082345678912",
+    "alamat": "Jalan Antapani Tengah No. 45",
+    "email": "eka456@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Antapani Tengah",
+    "kecamatan": "Antapani"
+  },
+  {
+    "pengguna_id": 6,
+    "nama": "Fajar",
+    "no_telp": "083456789123",
+    "alamat": "Jalan Pasirlayung No. 99",
+    "email": "fajar789@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Pasirlayung",
+    "kecamatan": "Cibiru"
+  },
+  {
+    "pengguna_id": 7,
+    "nama": "Gina",
+    "no_telp": "081987654321",
+    "alamat": "Jalan Sukamaju No. 77",
+    "email": "gina123@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Sukamaju",
+    "kecamatan": "Cibeunying Kidul"
+  },
+  {
+    "pengguna_id": 8,
+    "nama": "Hadi",
+    "no_telp": "089876543210",
+    "alamat": "Jalan Kopo No. 12",
+    "email": "hadi456@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Kopo",
+    "kecamatan": "Babakan Ciparay"
+  },
+  {
+    "pengguna_id": 9,
+    "nama": "Ika",
+    "no_telp": "082198765432",
+    "alamat": "Jalan Kebonjeruk No. 30",
+    "email": "ika789@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Kebonjeruk",
+    "kecamatan": "Andir"
+  },
+  {
+    "pengguna_id": 10,
+    "nama": "Joko",
+    "no_telp": "081223344556",
+    "alamat": "Jalan Cirangrang No. 5",
+    "email": "joko123@gmail.com",
+    "role": "PENGGUNA",
+    "kelurahan": "Cirangrang",
+    "kecamatan": "Babakan Ciparay"
+  }
+]
