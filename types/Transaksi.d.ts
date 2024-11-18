@@ -1,6 +1,7 @@
 export type TransaksiTypes = {
   transaksi_id: number;
   pengguna_id: number;
+  email_pengguna: string;
   tanggal_masuk: string;
   status_terkirim: boolean;
   tanggal_keluar: string;
