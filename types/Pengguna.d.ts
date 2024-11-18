@@ -1,4 +1,4 @@
-enum tipe_pengguna {
+export enum tipe_pengguna {
   ADMIN,
   PENGGUNA,
 }
