@@ -61,7 +61,7 @@ export const NavBar = () => {
         <div className="cart-wrapper hidden items-center lg:visible lg:flex">
           <ul className="hidden items-center lg:visible lg:flex">
             {routes.map((route) => {
-              if (route.key === "admin" || userRole === "admin")
+              if (route.key !== "admin" || userRole === "admin")
                 return (
                   <Link
                     key={route.title}
@@ -114,7 +114,7 @@ export const NavBar = () => {
           ) : (
             <Link href="/login" className="mx-3 flex items-center">
               <Button variant="light">
-                <span className="text-medium mx-1 font-light text-white">
+                <span className="mx-1 text-medium font-light text-white">
                   Login
                 </span>
                 <svg
