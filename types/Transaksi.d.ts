@@ -16,3 +16,14 @@ export type TransaksiSampahTypes = {
   nama_suk: string;
   subtotal: number;
 };
+
+export type CreateTransaksiTypes = {
+  email: string;
+  totalHarga: number;
+  item_sampah: Array<{
+    sampah_id: number;
+    nama_sampah: string;
+    jumlah: number;
+    harga: number;
+  }>;
+};
