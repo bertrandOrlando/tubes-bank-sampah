@@ -5,4 +5,5 @@ export type SampahTypes = {
   jenis_sampah: string;
   nama_suk: string;
   slug_image: string;
+  kuantitas: number;
 };
