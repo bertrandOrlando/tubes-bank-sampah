@@ -71,14 +71,13 @@ const DataMember = () => {
 
   return (
     <>
-      {/* <Breadcrumbs className="ml-10 mt-10">
-        <BreadcrumbItem>
-          <Link href={"/admin"}>admin</Link>
+      <Breadcrumbs variant="bordered" className="ml-4 mt-4">
+        <BreadcrumbItem href="/">Home</BreadcrumbItem>
+        <BreadcrumbItem href="/admin">Admin</BreadcrumbItem>
+        <BreadcrumbItem href="/admin/data-sampah" className="font-bold">
+          Data Sampah
         </BreadcrumbItem>
-        <BreadcrumbItem>
-          <Link href={"/admin/data-sampah"}>data-sampah</Link>
-        </BreadcrumbItem>
-      </Breadcrumbs> */}
+      </Breadcrumbs>
       <div className="flex flex-col items-center justify-center gap-y-6 p-8">
         <h1 className="my-4 text-3xl font-bold">Data Sampah</h1>
 
