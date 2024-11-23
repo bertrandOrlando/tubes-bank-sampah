@@ -87,7 +87,16 @@ const AdminPage = () => {
             variant="ghost"
             className="text-medium font-semibold"
           >
-            Tambah Transaksi
+            Tambah Transaksi Pengguna
+          </Button>
+          <Button
+            as={Link}
+            href="/admin/tambah-transaksi-pusat"
+            color="primary"
+            variant="ghost"
+            className="text-medium font-semibold"
+          >
+            Tambah Transaksi Pusat
           </Button>
           <Button
             as={Link}
