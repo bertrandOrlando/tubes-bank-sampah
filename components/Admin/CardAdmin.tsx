@@ -119,6 +119,7 @@ function CardComponent(
           size="sm"
           color="primary"
           variant="faded"
+          isDisabled={quantity <= 0}
         >
           -
         </Button>
