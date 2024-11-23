@@ -4,8 +4,7 @@
     "pengguna_id": 101,
     "email_pengguna": "john.doe@example.com",
     "tanggal_masuk": "2024-11-10",
-    "status_terkirim": true,
-    "tanggal_keluar": "2024-11-12",
+    "tipe_transaksi": "masuk",
     "total_transaksi": 1500000,
     "item_sampah": [
       {
@@ -120,8 +119,7 @@
     "pengguna_id": 102,
     "email_pengguna": "jane.smith@testmail.com",
     "tanggal_masuk": "2024-11-11",
-    "status_terkirim": false,
-    "tanggal_keluar": "2024-11-14",
+    "tipe_transaksi": "masuk",
     "total_transaksi": 300000,
     "item_sampah": [
       {
@@ -145,8 +143,7 @@
     "pengguna_id": 103,
     "email_pengguna": "user123@website.org",
     "tanggal_masuk": "2024-11-12",
-    "status_terkirim": true,
-    "tanggal_keluar": "2024-11-13",
+    "tipe_transaksi": "keluar",
     "total_transaksi": 150000,
     "item_sampah": [
       {
@@ -163,8 +160,7 @@
     "pengguna_id": 104,
     "email_pengguna": "admin@domain.com",
     "tanggal_masuk": "2024-11-13",
-    "status_terkirim": false,
-    "tanggal_keluar": "2024-11-15",
+    "tipe_transaksi": "masuk",
     "total_transaksi": 400000,
     "item_sampah": [
       {
@@ -188,8 +184,7 @@
     "pengguna_id": 105,
     "email_pengguna": "contact@company.net",
     "tanggal_masuk": "2024-11-14",
-    "status_terkirim": true,
-    "tanggal_keluar": "2024-11-16",
+    "tipe_transaksi": "keluar",
     "total_transaksi": 200000,
     "item_sampah": [
       {
@@ -206,8 +201,7 @@
     "pengguna_id": 106,
     "email_pengguna": "support@service.com",
     "tanggal_masuk": "2024-11-15",
-    "status_terkirim": false,
-    "tanggal_keluar": "2024-11-17",
+    "tipe_transaksi": "masuk",
     "total_transaksi": 500000,
     "item_sampah": [
       {
@@ -224,8 +218,7 @@
     "pengguna_id": 107,
     "email_pengguna": "info@mywebsite.com",
     "tanggal_masuk": "2024-11-16",
-    "status_terkirim": true,
-    "tanggal_keluar": "2024-11-18",
+    "tipe_transaksi": "keluar",
     "total_transaksi": 350000,
     "item_sampah": [
       {
@@ -242,8 +235,7 @@
     "pengguna_id": 108,
     "email_pengguna": "student1@school.edu",
     "tanggal_masuk": "2024-11-17",
-    "status_terkirim": false,
-    "tanggal_keluar": "2024-11-19",
+    "tipe_transaksi": "masuk",
     "total_transaksi": 450000,
     "item_sampah": [
       {
@@ -260,8 +252,7 @@
     "pengguna_id": 109,
     "email_pengguna": "developer@devmail.io",
     "tanggal_masuk": "2024-11-18",
-    "status_terkirim": true,
-    "tanggal_keluar": "2024-11-20",
+    "tipe_transaksi": "keluar",
     "total_transaksi": 100000,
     "item_sampah": [
       {
@@ -278,8 +269,7 @@
     "pengguna_id": 110,
     "email_pengguna": "sales@business.com",
     "tanggal_masuk": "2024-11-19",
-    "status_terkirim": false,
-    "tanggal_keluar": "2024-11-21",
+    "tipe_transaksi": "masuk",
     "total_transaksi": 600000,
     "item_sampah": [
       {
