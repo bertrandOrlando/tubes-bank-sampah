@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { parseDate } from "@internationalized/date";
 import TransaksiData from "@/data/Transaksi.json";
 import {
@@ -34,8 +34,6 @@ const AdminPage = () => {
   const [filterStart, setFilterStart] = useState<boolean>(false);
   const [filterEnd, setFilterEnd] = useState<boolean>(false);
   const [tipeTransaksi, setTipeTransaksi] = useState<string>("semua");
-  const [totalTransPengguna, setTotalTransPengguna] = useState<number>(0);
-  const [totalTransPusat, setTotalTransPusat] = useState<number>(0);
 
   const filterHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log("filter transaction with start date and end date");
@@ -48,6 +46,36 @@ const AdminPage = () => {
 
   const { formatRupiah } = useCurrencyFormatter();
   const { formatDate } = useDateFormatter();
+
+  const [totalTransPengguna, setTotalTransPengguna] = useState<number>(0);
+  const [totalTransPusat, setTotalTransPusat] = useState<number>(0);
+
+  useEffect(() => {
+    // update values when render page and click filter button
+    countTransactionPengguna();
+    countTransactionPusat();
+  }, [data]);
+
+  const countTransactionPengguna = () => {
+    const sum = data.reduce((accu, curr) => {
+      if (curr.tipe_transaksi === "masuk") {
+        return accu + curr.total_transaksi;
+      } else {
+        return accu;
+      }
+    }, 0);
+    setTotalTransPengguna(sum);
+  };
+  const countTransactionPusat = () => {
+    const sum = data.reduce((accu, curr) => {
+      if (curr.tipe_transaksi === "keluar") {
+        return accu + curr.total_transaksi;
+      } else {
+        return accu;
+      }
+    }, 0);
+    setTotalTransPusat(sum);
+  };
 
   const columns = [
     {
@@ -181,10 +209,10 @@ const AdminPage = () => {
 
         <div className="">
           <h3 className="text-md font-bold">
-            Total transaksi pengguna : {formatRupiah(3750000)}
+            Total transaksi pengguna : {formatRupiah(totalTransPengguna)}
           </h3>
           <h3 className="text-md font-bold">
-            Total transaksi bank sampah pusat : {formatRupiah(800000)}
+            Total transaksi bank sampah pusat : {formatRupiah(totalTransPusat)}
           </h3>
           <Table isStriped aria-label="Seluruh transaksi pengguna">
             <TableHeader columns={columns}>
