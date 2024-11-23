@@ -19,10 +19,6 @@ const LoginPage = () => {
       <div className="absolute inset-0 bg-[url('../public/hutan.jpg')] bg-cover bg-no-repeat"></div>
       <div className="absolute inset-0 bg-black opacity-10"></div>
 
-      <div className="absolute top-16 py-10 text-5xl font-semibold text-green-900">
-        <h1>Selamat datang kembali!</h1>
-      </div>
-
       <div className="absolute flex flex-col items-center justify-center gap-10">
         <div>
           <Link href="/" className="text-2xl font-semibold text-green-900">
