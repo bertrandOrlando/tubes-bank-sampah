@@ -15,6 +15,8 @@ import {
   Checkbox,
   RadioGroup,
   Radio,
+  BreadcrumbItem,
+  Breadcrumbs,
 } from "@nextui-org/react";
 
 import { useCurrencyFormatter } from "@/utils/useCurrencyFormatter";
@@ -106,6 +108,12 @@ const AdminPage = () => {
 
   return (
     <>
+      <Breadcrumbs variant="bordered" className="ml-4 mt-4">
+        <BreadcrumbItem href="/">Home</BreadcrumbItem>
+        <BreadcrumbItem href="/admin" className="font-bold">
+          Admin
+        </BreadcrumbItem>
+      </Breadcrumbs>
       <div className="flex w-full flex-col items-center justify-center gap-14 py-12">
         <div className="flex gap-16">
           <Button
