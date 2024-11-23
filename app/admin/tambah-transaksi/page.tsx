@@ -35,7 +35,7 @@ const AdminPage = () => {
         <BreadcrumbItem href="/">Home</BreadcrumbItem>
         <BreadcrumbItem href="/admin">Admin</BreadcrumbItem>
         <BreadcrumbItem href="/admin/tambah-transaksi" className="font-bold">
-          Tambah Transaksi
+          Tambah Transaksi Pengguna
         </BreadcrumbItem>
       </Breadcrumbs>
       <div className="flex w-full flex-col items-center justify-center gap-14 py-12">
