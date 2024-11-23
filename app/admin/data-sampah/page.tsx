@@ -47,7 +47,11 @@ const DataMember = () => {
       label: "FOTO SAMPAH",
     },
     {
-      key: "",
+      key: "tombolEdit",
+      label: "",
+    },
+    {
+      key: "tombolHapus",
       label: "",
     },
   ];
@@ -137,22 +141,25 @@ const DataMember = () => {
                       {item.nama_suk}
                     </TableCell>
                     <TableCell className="text-center">
-                      {/* <Image
+                      <Image
                         src={item.slug_image}
                         alt={item.slug_image}
-                        width={20}
-                        height={20}
-                      /> */}
+                        width={200}
+                        height={200}
+                      />
                       {item.slug_image}
                     </TableCell>
-                    <TableCell className="flex items-center justify-center gap-x-5">
-                      <Button color="primary" variant="ghost">
-                        <Link
-                          href={`/admin/data-sampah/edit/${item.sampah_id}`}
-                        >
-                          Edit
-                        </Link>
+                    <TableCell className="text-center">
+                      <Button
+                        as={Link}
+                        color="primary"
+                        variant="ghost"
+                        href={`/admin/data-sampah/edit/${item.sampah_id}`}
+                      >
+                        <div>Edit</div>
                       </Button>
+                    </TableCell>
+                    <TableCell className="text-center">
                       <Button color="danger">
                         <div>Hapus</div>
                       </Button>
