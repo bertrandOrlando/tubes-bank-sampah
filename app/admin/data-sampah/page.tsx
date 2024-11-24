@@ -35,10 +35,6 @@ const DataMember = () => {
       label: "HARGA",
     },
     {
-      key: "jenis_sampah",
-      label: "JENIS",
-    },
-    {
       key: "nama_suk",
       label: "SUK",
     },
@@ -110,7 +106,7 @@ const DataMember = () => {
             <Table isStriped aria-label="Seluruh data member">
               <TableHeader columns={columns}>
                 {(column) => (
-                  <TableColumn key={column.key} className="px-20 text-center">
+                  <TableColumn key={column.key} className="px-14 text-center">
                     {column.label}{" "}
                   </TableColumn>
                 )}
@@ -132,9 +128,6 @@ const DataMember = () => {
                     </TableCell>
                     <TableCell className="text-center">
                       {formatRupiah(item.harga_sekarang)}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {item.jenis_sampah}
                     </TableCell>
                     <TableCell className="text-center">
                       {item.nama_suk}
