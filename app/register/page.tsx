@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import dataKecamatan from "@/data/Kecamatan.json";
 import dataKelurahan from "@/data/Kelurahan.json";
 import { KecamatanTypes } from "@/types/Kecamatan";
@@ -13,19 +14,68 @@ const RegisterPage = () => {
   const [password, setPassword] = useState<string>("");
   const [noTelp, setNoTelp] = useState<string>("");
   const [alamat, setAlamat] = useState<string>("");
-  const [kecamatan, setKecamatan] = useState<number>();
-  const [kelurahan, setKelurahan] = useState<number>();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [selectedKecamatan, setSelectedKecamatan] = useState<number>();
+  const [selectedKelurahan, setSelectedKelurahan] = useState<number>();
+  const [kecamatan, setKecamatan] = useState<KecamatanTypes[]>();
+  const [kelurahan, setKelurahan] = useState<KelurahanTypes[]>();
+
+  // fetch data kecamatan dari DB
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const { data } = await axios.get<KecamatanTypes[]>(
+  //       "http://localhost:5000/api/kecamatan",
+  //     );
+
+  //     setKecamatan(data);
+  //     // setSelectedKecamatan(data[0].kec_id);
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // // fetch data kelurahan sesuai kec_id
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const { data } = await axios.get(`http://localhost:5000/api/kelurahan`, {
+  //       params: {
+  //         kec_id: selectedKecamatan,
+  //       },
+  //     });
+
+  //     setKelurahan(data);
+  //     setSelectedKelurahan(data[0].kel_id);
+
+  //     return data;
+  //   };
+  //   if (selectedKecamatan) {
+  //     fetchData();
+  //   }
+  // }, [selectedKecamatan]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // nanti kalau mau proses ke backend(?)
-    console.log(nama);
-    console.log(email);
-    console.log(password);
-    console.log(noTelp);
-    console.log(alamat);
-    console.log(kecamatan);
-    console.log(kelurahan);
+    console.log({
+      email,
+      nama,
+      noTelp,
+      alamat,
+      password,
+      selectedKecamatan,
+      selectedKelurahan,
+    });
+
+    const { data } = await axios.post("http://localhost:5000/api/register", {
+      noTelp,
+      alamat,
+      email,
+      kelId: selectedKelurahan,
+      password,
+      nama,
+    });
+
+    console.log(data);
   };
 
   return (
@@ -55,6 +105,8 @@ const RegisterPage = () => {
                   type="text"
                   className="w-72 rounded-md bg-slate-100 px-2 py-2"
                   placeholder="Michael Scofield"
+                  name="nama"
+                  value={nama}
                   onChange={(e) => setNama(e.target.value)}
                 />
               </div>
@@ -67,6 +119,8 @@ const RegisterPage = () => {
                   type="text"
                   className="w-72 rounded-md bg-slate-100 px-2 py-2"
                   placeholder="user@gmail.com"
+                  name="email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -79,6 +133,8 @@ const RegisterPage = () => {
                   type="password"
                   className="w-72 rounded-md bg-slate-100 px-2 py-2"
                   placeholder="********"
+                  name="password"
+                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -91,6 +147,8 @@ const RegisterPage = () => {
                   type="text"
                   className="w-72 rounded-md bg-slate-100 px-2 py-2"
                   placeholder="08123456789"
+                  name="noTelp"
+                  value={noTelp}
                   onChange={(e) => setNoTelp(e.target.value)}
                 />
               </div>
@@ -101,6 +159,8 @@ const RegisterPage = () => {
                   type="text"
                   className="w-72 rounded-md bg-slate-100 px-2 py-2"
                   placeholder="JL Ciumbuleuit No 94"
+                  name="alamat"
+                  value={alamat}
                   onChange={(e) => setAlamat(e.target.value)}
                 />
               </div>
@@ -114,14 +174,15 @@ const RegisterPage = () => {
                   id="kecamatan"
                   className="w-72 rounded-md bg-slate-100 px-2 py-2"
                   onChange={(e) => {
-                    setKecamatan(Number(e.target.value));
+                    setSelectedKecamatan(Number(e.target.value));
                   }}
-                  value={kecamatan}
+                  value={selectedKecamatan}
                   defaultValue=""
                 >
                   <option value="" disabled>
                     Pilih Kecamatan
                   </option>
+                  {/* versi json*/}
                   {dataKecamatan.map((currKecamatan: KecamatanTypes) => {
                     return (
                       <option
@@ -132,6 +193,18 @@ const RegisterPage = () => {
                       </option>
                     );
                   })}
+
+                  {/* kalau udah ada backend */}
+                  {/* {kecamatan?.map((currKecamatan: KecamatanTypes) => {
+                    return (
+                      <option
+                        value={currKecamatan.kec_id}
+                        key={currKecamatan.kec_id}
+                      >
+                        {currKecamatan.nama_kec}
+                      </option>
+                    );
+                  })} */}
                 </select>
               </div>
 
@@ -143,22 +216,23 @@ const RegisterPage = () => {
                   name="Kelurahan"
                   id="kelurahan"
                   className={`w-72 rounded-md bg-slate-100 px-2 py-2 ${
-                    !kecamatan ? "cursor-not-allowed" : ""
+                    !selectedKecamatan ? "cursor-not-allowed" : ""
                   }`}
-                  disabled={!kecamatan}
+                  disabled={!selectedKecamatan}
                   onChange={(e) => {
-                    setKelurahan(Number(e.target.value));
+                    setSelectedKelurahan(Number(e.target.value));
                   }}
-                  value={kelurahan}
+                  value={selectedKelurahan}
                   defaultValue=""
                 >
                   <option value="" disabled>
                     Pilih Kelurahan
                   </option>
+                  {/* versi json */}
                   {dataKelurahan
                     .filter(
                       (currKelurahan: KelurahanTypes) =>
-                        currKelurahan.kec_id === kecamatan,
+                        currKelurahan.kec_id === selectedKecamatan,
                     )
                     .map((currKelurahan: KelurahanTypes) => {
                       return (
@@ -170,6 +244,23 @@ const RegisterPage = () => {
                         </option>
                       );
                     })}
+
+                  {/* kalau udah ada backend */}
+                  {/* {kelurahan
+                    ?.filter(
+                      (currKelurahan: KelurahanTypes) =>
+                        currKelurahan.kec_id === selectedKecamatan,
+                    )
+                    .map((currKelurahan: KelurahanTypes) => {
+                      return (
+                        <option
+                          value={currKelurahan.kel_id}
+                          key={currKelurahan.kel_id}
+                        >
+                          {currKelurahan.nama_kel}
+                        </option>
+                      );
+                    })} */}
                 </select>
               </div>
 
