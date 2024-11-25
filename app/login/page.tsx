@@ -2,16 +2,29 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // nanti kalau mau proses ke backend(?)
-    console.log(email);
-    console.log(password);
+
+    try {
+      const { data } = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+      });
+
+      localStorage.setItem("token", data.token);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
