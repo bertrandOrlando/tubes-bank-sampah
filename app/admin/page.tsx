@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { parseDate } from "@internationalized/date";
 import TransaksiData from "@/data/Transaksi.json";
 import {
@@ -15,6 +15,8 @@ import {
   Checkbox,
   RadioGroup,
   Radio,
+  BreadcrumbItem,
+  Breadcrumbs,
 } from "@nextui-org/react";
 
 import { useCurrencyFormatter } from "@/utils/useCurrencyFormatter";
@@ -33,7 +35,8 @@ const AdminPage = () => {
   //   Logic Filter Transaksi
   const [filterStart, setFilterStart] = useState<boolean>(false);
   const [filterEnd, setFilterEnd] = useState<boolean>(false);
-  const [tipeTransaksi, setTipeTransaksi] = useState<string>("masuk");
+  const [tipeTransaksi, setTipeTransaksi] = useState<string>("semua");
+
   const filterHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log("filter transaction with start date and end date");
   };
@@ -42,8 +45,39 @@ const AdminPage = () => {
   const data = TransaksiData.map((item, index) => {
     return { ...item, key: index + 1 };
   });
+
   const { formatRupiah } = useCurrencyFormatter();
   const { formatDate } = useDateFormatter();
+
+  const [totalTransPengguna, setTotalTransPengguna] = useState<number>(0);
+  const [totalTransPusat, setTotalTransPusat] = useState<number>(0);
+
+  useEffect(() => {
+    // update values when render page and click filter button
+    countTransactionPengguna();
+    countTransactionPusat();
+  }, [data]);
+
+  const countTransactionPengguna = () => {
+    const sum = data.reduce((accu, curr) => {
+      if (curr.tipe_transaksi === "masuk") {
+        return accu + curr.total_transaksi;
+      } else {
+        return accu;
+      }
+    }, 0);
+    setTotalTransPengguna(sum);
+  };
+  const countTransactionPusat = () => {
+    const sum = data.reduce((accu, curr) => {
+      if (curr.tipe_transaksi === "keluar") {
+        return accu + curr.total_transaksi;
+      } else {
+        return accu;
+      }
+    }, 0);
+    setTotalTransPusat(sum);
+  };
 
   const columns = [
     {
@@ -64,11 +98,7 @@ const AdminPage = () => {
     },
     {
       key: "status",
-      label: "STATUS",
-    },
-    {
-      key: "tanggal_keluar",
-      label: "TANGGAL KELUAR",
+      label: "TIPE TRANSAKSI",
     },
     {
       key: "",
@@ -78,6 +108,12 @@ const AdminPage = () => {
 
   return (
     <>
+      <Breadcrumbs variant="bordered" className="ml-4 mt-4">
+        <BreadcrumbItem href="/">Home</BreadcrumbItem>
+        <BreadcrumbItem href="/admin" className="font-bold">
+          Admin
+        </BreadcrumbItem>
+      </Breadcrumbs>
       <div className="flex w-full flex-col items-center justify-center gap-14 py-12">
         <div className="flex gap-16">
           <Button
@@ -87,7 +123,16 @@ const AdminPage = () => {
             variant="ghost"
             className="text-medium font-semibold"
           >
-            Tambah Transaksi
+            Tambah Transaksi Pengguna
+          </Button>
+          <Button
+            as={Link}
+            href="/admin/tambah-transaksi-pusat"
+            color="primary"
+            variant="ghost"
+            className="text-medium font-semibold"
+          >
+            Tambah Transaksi Pusat
           </Button>
           <Button
             as={Link}
@@ -154,8 +199,9 @@ const AdminPage = () => {
             orientation="horizontal"
             value={tipeTransaksi}
             onValueChange={setTipeTransaksi}
-            defaultValue="masuk"
+            defaultValue="semua"
           >
+            <Radio value="semua">Semua Transaksi</Radio>
             <Radio value="masuk">Transaksi Masuk</Radio>
             <Radio value="keluar">Transaksi Keluar</Radio>
           </RadioGroup>
@@ -170,6 +216,12 @@ const AdminPage = () => {
         </Button>
 
         <div className="">
+          <h3 className="text-md font-bold">
+            Total transaksi pengguna : {formatRupiah(totalTransPengguna)}
+          </h3>
+          <h3 className="text-md font-bold">
+            Total transaksi bank sampah pusat : {formatRupiah(totalTransPusat)}
+          </h3>
           <Table isStriped aria-label="Seluruh transaksi pengguna">
             <TableHeader columns={columns}>
               {(column) => (
@@ -196,15 +248,8 @@ const AdminPage = () => {
                   <TableCell className="text-center">
                     {formatRupiah(item.total_transaksi)}
                   </TableCell>
-                  <TableCell className="text-center">
-                    {item.status_terkirim == false
-                      ? "Belum Terkirim"
-                      : "Terkirim"}
-                  </TableCell>
-                  <TableCell className="text-center">
-                    {item.status_terkirim == true
-                      ? formatDate(item.tanggal_keluar)
-                      : "-"}
+                  <TableCell className="text-center capitalize">
+                    {`${item.tipe_transaksi}`}
                   </TableCell>
                   <TableCell className="flex items-center justify-center">
                     <ModalComponent {...item} />

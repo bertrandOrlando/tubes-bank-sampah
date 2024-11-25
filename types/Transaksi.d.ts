@@ -3,8 +3,7 @@ export type TransaksiTypes = {
   pengguna_id: number;
   email_pengguna: string;
   tanggal_masuk: string;
-  status_terkirim: boolean;
-  tanggal_keluar: string;
+  tipe_transaksi: string;
   total_transaksi: number;
   item_sampah: TransaksiSampahTypes[];
 };

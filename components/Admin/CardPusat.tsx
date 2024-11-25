@@ -8,9 +8,9 @@ function CardComponent(
   props: SampahTypes & {
     transaksi: CreateTransaksiTypes;
     setTransaksi: Dispatch<SetStateAction<CreateTransaksiTypes>>;
-  },
+  } & { maxQuantity: number },
 ) {
-  const { transaksi, setTransaksi } = props;
+  const { transaksi, setTransaksi, maxQuantity } = props;
   const { formatRupiah } = useCurrencyFormatter();
 
   const addItemHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -107,9 +107,13 @@ function CardComponent(
         <p className="text-lg font-bold text-white">{props.nama_sampah}</p>
       </CardFooter>
       <CardFooter className="py-1">
-        <p className="text-md text-white">
-          {formatRupiah(props.harga_sekarang)} / {props.nama_suk}
-        </p>
+        <div className="flex w-full justify-between">
+          <p className="text-md text-white">
+            {formatRupiah(props.harga_sekarang)} / {props.nama_suk}
+          </p>
+
+          <p className="text-md text-white">(max: {maxQuantity})</p>
+        </div>
       </CardFooter>
       <CardFooter className="flex items-center justify-center gap-5 py-1">
         <Button
@@ -130,6 +134,7 @@ function CardComponent(
           size="sm"
           color="primary"
           variant="faded"
+          isDisabled={quantity == maxQuantity}
         >
           +
         </Button>
