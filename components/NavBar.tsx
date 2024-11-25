@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { jwtDecode } from "jwt-decode";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
@@ -16,20 +17,41 @@ import ProfileIcon from "@/public/profile-round-svgrepo.svg";
 export const NavBar = () => {
   const pathName = usePathname();
 
-  const isLoggedIn: boolean = true;
-  const userRole: string = "admin";
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [userRole, setUserRole] = useState<string>("");
+  const [namaUser, setNamaUser] = useState<string>("");
+
+  // const isLoggedIn: boolean = false;
+  // const userRole: string = "admin";
 
   const [scrollY, setScrollY] = useState<number>(0);
   useEffect(() => {
+    const fetchToken = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const decoded: { nama: string; role: string } = jwtDecode(token);
+          setIsLoggedIn(true);
+          setUserRole(decoded.role);
+          setNamaUser(decoded.nama);
+        } catch (error) {
+          console.error("Invalid token:", error);
+          setIsLoggedIn(false);
+        }
+      }
+    };
+
+    fetchToken();
+
     window.addEventListener("scroll", () => setScrollY(window.scrollY));
   }, []);
 
   const items = [
-    {
-      key: "profile",
-      label: "Profile",
-      url: "/profile",
-    },
+    // {
+    //   key: "profile",
+    //   label: "Profile",
+    //   url: "/profile",
+    // },
     {
       key: "riwayat-transaksi-",
       label: "Riwayat Transaksi",
@@ -38,7 +60,7 @@ export const NavBar = () => {
     {
       key: "logout",
       label: "Logout",
-      url: "/api/logout",
+      url: "/",
     },
   ];
 
@@ -48,6 +70,10 @@ export const NavBar = () => {
     { title: "Daftar Harga", path: "/daftar-harga", key: "daftar-harga" },
     // { title: "About Us", path: "/about-us", key: "about-us" },
   ];
+
+  const handlerLogout = () => {
+    localStorage.removeItem("token");
+  };
 
   return (
     <nav
@@ -92,7 +118,7 @@ export const NavBar = () => {
                     alt="profile image"
                     className="text-white"
                   />
-                  John Doe
+                  {namaUser}
                 </Button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Dynamic Actions" items={items}>
@@ -104,6 +130,9 @@ export const NavBar = () => {
                     color={item.key === "logout" ? "danger" : "default"}
                     className={
                       item.key === "logout" ? "text-danger" : "text-black"
+                    }
+                    onClick={
+                      item.key === "logout" ? () => handlerLogout() : undefined
                     }
                   >
                     {item.label}
