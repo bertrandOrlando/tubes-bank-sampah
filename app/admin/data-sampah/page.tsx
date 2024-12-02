@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableHeader,
@@ -19,8 +19,26 @@ import { SampahTypes } from "@/types/Sampah";
 import Link from "next/link";
 import Image from "next/image";
 import { useCurrencyFormatter } from "@/utils/useCurrencyFormatter";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { getToken } from "@/utils/getToken";
 
-const DataMember = () => {
+const DataSampah = () => {
+  const [dataSampah, setDataSampah] = useState<SampahTypes[]>();
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("http://localhost:5000/api/sampah/");
+
+      setDataSampah(data);
+    };
+
+    fetchData();
+  }, []);
+
   const columns = [
     {
       key: "key",
@@ -52,15 +70,36 @@ const DataMember = () => {
     },
   ];
 
-  const [dataSampah, setDataSampah] = useState<SampahTypes[]>(SampahData);
-  const [searchSampah, setSearchSampah] = useState("");
-
-  const searchSampahHandler = (nama_sampah: string) => {
+  const searchHandler = (value: string) => {
     setDataSampah(() =>
-      dataSampah.filter((data: SampahTypes) =>
-        data.nama_sampah.includes(nama_sampah),
+      dataSampah?.filter((e: SampahTypes) =>
+        e.nama_sampah.toLowerCase().includes(value.toLowerCase()),
       ),
     );
+  };
+
+  const handleDelete = async (sampah_id: number) => {
+    try {
+      const status = await axios.delete(
+        `http://localhost:5000/api/sampah/${sampah_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        },
+      );
+
+      // alternatif pertama, yg kata marvel, filter di front end nya aja jd hemat 1 request ke server
+      setDataSampah((prev) =>
+        prev?.filter((item) => item.sampah_id !== sampah_id),
+      );
+
+      // alternatif lain, di fetch ulang datanya biar pasti udah ke delete dari server,
+      // const { data } = await axios.get("http://localhost:5000/api/sampah/");
+      // setDataSampah(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { formatRupiah } = useCurrencyFormatter();
@@ -82,13 +121,13 @@ const DataMember = () => {
             type="text"
             variant={"bordered"}
             label="Nama Sampah"
-            onChange={(e) => setSearchSampah(e.target.value)}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
           <Button
             className="ml-2"
             color="primary"
             variant="ghost"
-            onClick={() => searchSampahHandler(searchSampah)}
+            onClick={() => searchHandler(searchValue)}
           >
             Search
           </Button>
@@ -112,10 +151,12 @@ const DataMember = () => {
                 )}
               </TableHeader>
               <TableBody
-                items={dataSampah.map((item, index) => ({
-                  ...item,
-                  idx: index + 1,
-                }))}
+                items={
+                  dataSampah?.map((item, index) => ({
+                    ...item,
+                    idx: index + 1,
+                  })) || []
+                }
                 emptyContent={"Data sampah belum ditemukan"}
               >
                 {(item) => (
@@ -134,12 +175,11 @@ const DataMember = () => {
                     </TableCell>
                     <TableCell className="text-center">
                       <Image
-                        src={item.slug_image}
+                        src={`http://localhost:5000/${item.slug_image}`}
                         alt={item.slug_image}
                         width={200}
                         height={200}
                       />
-                      {item.slug_image}
                     </TableCell>
                     <TableCell className="text-center">
                       <Button
@@ -152,7 +192,10 @@ const DataMember = () => {
                       </Button>
                     </TableCell>
                     <TableCell className="text-center">
-                      <Button color="danger">
+                      <Button
+                        color="danger"
+                        onClick={() => handleDelete(item.sampah_id)}
+                      >
                         <div>Hapus</div>
                       </Button>
                     </TableCell>
@@ -167,4 +210,4 @@ const DataMember = () => {
   );
 };
 
-export default DataMember;
+export default DataSampah;
