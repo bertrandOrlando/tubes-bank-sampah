@@ -22,7 +22,7 @@ export type CreateTransaksiTypes = {
   item_sampah: Array<{
     sampah_id: number;
     nama_sampah: string;
-    jumlah: number;
-    harga: number;
+    jumlah_sampah: number;
+    harga_sampah: number;
   }>;
 };
