@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { parseDate } from "@internationalized/date";
-import TransaksiData from "@/data/Transaksi.json";
+// import TransaksiData from "@/data/Transaksi.json";
 import {
   Table,
   TableHeader,
@@ -23,8 +23,51 @@ import { useCurrencyFormatter } from "@/utils/useCurrencyFormatter";
 import { useDateFormatter } from "@/utils/useDateFormatter";
 import ModalComponent from "@/components/Modal";
 import Link from "next/link";
+import { TransaksiTypes } from "@/types/Transaksi";
+import AxiosInstance from "@/utils/AxiosInstance";
+import { AxiosError } from "axios";
 
 const AdminPage = () => {
+  // Transaksi Data
+  const [transaksiData, setTransaksiData] = useState<TransaksiTypes[]>([]);
+  const [filteredData, setFilteredData] = useState<TransaksiTypes[]>([]);
+
+  const data = filteredData.map((item, index) => {
+    return {
+      ...item,
+      key: index + 1,
+      total_transaksi: item.item_sampah.reduce(
+        (acc, item) => acc + item.jumlah_sampah * item.harga_sampah,
+        0,
+      ),
+    };
+  });
+
+  useEffect(() => {
+    const fetchPengguna = async () => {
+      try {
+        const response = await AxiosInstance.get("/api/transaksi/all");
+        const data = response.data.map(
+          (item: TransaksiTypes, index: number) => {
+            return {
+              ...item,
+              key: index + 1,
+              tanggal: item.tanggal.substring(0, 10),
+            };
+          },
+        );
+        console.log(response.data);
+        setTransaksiData(data);
+        setFilteredData(data);
+      } catch (error) {
+        const err = error as AxiosError;
+        console.error(err.message);
+      }
+    };
+
+    fetchPengguna();
+  }, []);
+
   // Logic Calendar
   const today = new Date();
   const currDate = today.toISOString().slice(0, 10);
@@ -42,9 +85,6 @@ const AdminPage = () => {
   };
 
   //   Logic Table Transaksi
-  const data = TransaksiData.map((item, index) => {
-    return { ...item, key: index + 1 };
-  });
 
   const { formatRupiah } = useCurrencyFormatter();
   const { formatDate } = useDateFormatter();
@@ -239,11 +279,9 @@ const AdminPage = () => {
                   <TableCell className="text-center font-semibold">
                     {item.key}
                   </TableCell>
+                  <TableCell className="text-center">{item.email}</TableCell>
                   <TableCell className="text-center">
-                    {item.email_pengguna}
-                  </TableCell>
-                  <TableCell className="text-center">
-                    {formatDate(item.tanggal_masuk)}
+                    {formatDate(item.tanggal.substring(0, 10))}
                   </TableCell>
                   <TableCell className="text-center">
                     {formatRupiah(item.total_transaksi)}
