@@ -19,11 +19,16 @@ function CardComponent(
         (item) => item.sampah_id === props.sampah_id,
       );
 
+      const currentQuantity = existingItem ? existingItem.jumlah_sampah : 0;
+      if (currentQuantity >= maxQuantity) {
+        return prevVal;
+      }
+
       if (existingItem) {
         // Update jumlah item jika sudah ada
         const updatedItems = prevVal.item_sampah.map((item) =>
           item.sampah_id === props.sampah_id
-            ? { ...item, jumlah: item.jumlah + 1 }
+            ? { ...item, jumlah_sampah: item.jumlah_sampah + 1 }
             : item,
         );
         return {
@@ -38,8 +43,8 @@ function CardComponent(
         const newItem = {
           sampah_id: props.sampah_id,
           nama_sampah: props.nama_sampah,
-          jumlah: 1,
-          harga: props.harga_sekarang,
+          jumlah_sampah: 1,
+          harga_sampah: props.harga_sekarang,
         };
         updatedTransaksi.item_sampah.push(newItem);
         return updatedTransaksi;
@@ -53,11 +58,11 @@ function CardComponent(
         (item) => item.sampah_id === props.sampah_id,
       );
 
-      if (existingItem && existingItem.jumlah > 1) {
+      if (existingItem && existingItem.jumlah_sampah > 1) {
         // Kurangi jumlah item jika lebih dari 1
         const updatedItems = prevVal.item_sampah.map((item) =>
           item.sampah_id === props.sampah_id
-            ? { ...item, jumlah: item.jumlah - 1 }
+            ? { ...item, jumlah_sampah: item.jumlah_sampah - 1 }
             : item,
         );
         return {
@@ -65,7 +70,7 @@ function CardComponent(
           item_sampah: updatedItems,
           totalHarga: prevVal.totalHarga - props.harga_sekarang,
         };
-      } else if (existingItem && existingItem.jumlah === 1) {
+      } else if (existingItem && existingItem.jumlah_sampah === 1) {
         // Hapus item jika jumlahnya 1
         const updatedItems = prevVal.item_sampah.filter(
           (item) => item.sampah_id !== props.sampah_id,
@@ -83,7 +88,7 @@ function CardComponent(
   // Mendapatkan jumlah item dari transaksi
   const quantity =
     transaksi.item_sampah.find((item) => item.sampah_id === props.sampah_id)
-      ?.jumlah || 0;
+      ?.jumlah_sampah || 0;
 
   return (
     <Card
