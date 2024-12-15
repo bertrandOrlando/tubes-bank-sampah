@@ -73,6 +73,7 @@ export const NavBar = () => {
 
   const handlerLogout = () => {
     localStorage.removeItem("token");
+    window.location.href = "/";
   };
 
   return (
