@@ -33,9 +33,9 @@ const ModalComponent = (props: TransaksiTypes) => {
         ...item,
         key: index + 1,
         harga_sampah: formatRupiah(item.harga_sampah) + "/" + item.nama_suk,
-        subtotal: formatRupiah(item.subtotal),
+        subtotal: formatRupiah(item.harga_sampah * item.jumlah_sampah),
       };
-    }
+    },
   );
 
   const columns = [
@@ -77,11 +77,11 @@ const ModalComponent = (props: TransaksiTypes) => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1 border-b-3">
-                Transaksi tanggal {props.tanggal_masuk}
+                Transaksi tanggal {props.tanggal}
               </ModalHeader>
               <ModalBody className="p-10">
-                <h1 className="font-bold text-lg">Detail Penjualan Sampah</h1>
-                <h1 className="font-semibold text-md">
+                <h1 className="text-lg font-bold">Detail Penjualan Sampah</h1>
+                <h1 className="text-md font-semibold">
                   Total Pendapatan : {formatRupiah(props.total_transaksi)}
                 </h1>
 

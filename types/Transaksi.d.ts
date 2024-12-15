@@ -1,8 +1,8 @@
 export type TransaksiTypes = {
   transaksi_id: number;
   pengguna_id: number;
-  email_pengguna: string;
-  tanggal_masuk: string;
+  email: string;
+  tanggal: string;
   tipe_transaksi: string;
   total_transaksi: number;
   item_sampah: TransaksiSampahTypes[];
@@ -22,7 +22,7 @@ export type CreateTransaksiTypes = {
   item_sampah: Array<{
     sampah_id: number;
     nama_sampah: string;
-    jumlah: number;
-    harga: number;
+    jumlah_sampah: number;
+    harga_sampah: number;
   }>;
 };
