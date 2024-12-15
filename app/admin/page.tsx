@@ -81,7 +81,28 @@ const AdminPage = () => {
   const [tipeTransaksi, setTipeTransaksi] = useState<string>("semua");
 
   const filterHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log("filter transaction with start date and end date");
+    let newData = transaksiData;
+
+    if (filterStart) {
+      newData = newData.filter(
+        (transaksi) =>
+          transaksi.tanggal.localeCompare(startDate.toString()) >= 0,
+      );
+    }
+    if (filterEnd) {
+      newData = newData.filter(
+        (transaksi) => transaksi.tanggal.localeCompare(endDate.toString()) <= 0,
+      );
+    }
+    if (tipeTransaksi !== "semua") {
+      newData = newData.filter(
+        (transaksi) => transaksi.tipe_transaksi === tipeTransaksi,
+      );
+    }
+
+    setFilteredData(newData);
+    console.log(filterStart, filterEnd, tipeTransaksi);
+    console.log(newData);
   };
 
   //   Logic Table Transaksi
