@@ -1,8 +1,8 @@
 export type TransaksiTypes = {
   transaksi_id: number;
   pengguna_id: number;
-  email_pengguna: string;
-  tanggal_masuk: string;
+  email: string;
+  tanggal: string;
   tipe_transaksi: string;
   total_transaksi: number;
   item_sampah: TransaksiSampahTypes[];
