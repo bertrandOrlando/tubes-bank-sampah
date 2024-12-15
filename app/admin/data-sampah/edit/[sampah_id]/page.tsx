@@ -74,6 +74,7 @@ const EditSampahPage = ({ params }: { params: Params }) => {
 
       console.log(data);
 
+      alert("Perubahan data berhasil disimpan!");
       router.push("/admin/data-sampah");
     } catch (error) {
       console.error("Submission failed", error);

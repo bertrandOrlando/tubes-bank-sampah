@@ -31,9 +31,18 @@ const DataSampah = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("http://localhost:5000/api/sampah/");
+      const { data } = await axios.get<SampahTypes[]>(
+        "http://localhost:5000/api/sampah/",
+      );
 
-      setDataSampah(data);
+      if (data) {
+        const dataSorted = data.sort((a: SampahTypes, b: SampahTypes) =>
+          a.nama_sampah
+            .toLowerCase()
+            .localeCompare(b.nama_sampah.toLowerCase()),
+        );
+        setDataSampah(dataSorted);
+      }
     };
 
     fetchData();

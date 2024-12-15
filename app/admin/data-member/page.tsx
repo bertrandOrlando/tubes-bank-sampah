@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableHeader,
@@ -14,9 +14,10 @@ import {
   Breadcrumbs,
 } from "@nextui-org/react";
 
-import PenggunaData from "@/data/Pengguna.json";
 import { PenggunaTypes } from "@/types/Pengguna";
 import Link from "next/link";
+import axios from "axios";
+import { getToken } from "@/utils/getToken";
 
 enum tipe_pengguna {
   ADMIN,
@@ -46,12 +47,12 @@ const DataMember = () => {
       label: "EMAIL",
     },
     {
-      key: "kelurahan",
-      label: "KELURAHAN",
-    },
-    {
       key: "kecamatan",
       label: "KECAMATAN",
+    },
+    {
+      key: "kelurahan",
+      label: "KELURAHAN",
     },
     {
       key: "",
@@ -59,17 +60,44 @@ const DataMember = () => {
     },
   ];
 
-  const DataMember: PenggunaTypes[] = PenggunaData.map((item) => ({
-    ...item,
-    role: tipe_pengguna[item.role as keyof typeof tipe_pengguna],
-  }));
+  // const DataMember: PenggunaTypes[] = PenggunaData.map((item) => ({
+  //   ...item,
+  //   role: tipe_pengguna[item.role as keyof typeof tipe_pengguna],
+  // }));
 
-  const [dataPengguna, setDataPengguna] = useState<PenggunaTypes[]>(DataMember);
+  const [dataPengguna, setDataPengguna] = useState<PenggunaTypes[]>([]);
   const [searchEmail, setSearchEmail] = useState("");
 
-  const searchEmailHandler = (email: string) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("http://localhost:5000/api/users/", {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      });
+
+      console.log(data);
+
+      if (data) {
+        const filteredData = data.filter(
+          (currData: PenggunaTypes) => currData.role.toString() !== "admin",
+        );
+        const dataSorted = filteredData.sort(
+          (a: PenggunaTypes, b: PenggunaTypes) =>
+            a.nama.toLowerCase().localeCompare(b.nama.toLowerCase()),
+        );
+        setDataPengguna(dataSorted);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const searchEmailHandler = (value: string) => {
     setDataPengguna(() =>
-      dataPengguna.filter((data: PenggunaTypes) => data.email.includes(email)),
+      dataPengguna?.filter((e: PenggunaTypes) =>
+        e.email.toLowerCase().includes(value.toLowerCase()),
+      ),
     );
   };
 
@@ -127,12 +155,8 @@ const DataMember = () => {
                   <TableCell className="text-center">{item.no_telp}</TableCell>
                   <TableCell className="text-center">{item.alamat}</TableCell>
                   <TableCell className="text-center">{item.email}</TableCell>
-                  <TableCell className="text-center">
-                    {item.kelurahan}
-                  </TableCell>
-                  <TableCell className="text-center">
-                    {item.kecamatan}
-                  </TableCell>
+                  <TableCell className="text-center">{item.nama_kec}</TableCell>
+                  <TableCell className="text-center">{item.nama_kel}</TableCell>
                   <TableCell className="flex items-center justify-center">
                     <Button color="primary" variant="ghost" className="">
                       <Link

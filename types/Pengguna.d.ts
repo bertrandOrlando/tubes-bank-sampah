@@ -10,6 +10,8 @@ export type PenggunaTypes = {
   alamat: string;
   email: string;
   role: tipe_pengguna;
-  kelurahan: string;
-  kecamatan: string;
+  kec_id: number;
+  nama_kec: string;
+  kel_id: number;
+  nama_kel: string;
 };
