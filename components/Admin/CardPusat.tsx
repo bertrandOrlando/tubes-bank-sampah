@@ -104,8 +104,8 @@ function CardComponent(
           radius="md"
           width="100%"
           alt={props.nama_sampah}
-          className="h-[140px] w-full object-cover"
-          src={"https://placehold.co/600x400/EEE/31343C"}
+          className="h-[140px] w-[210px] object-cover"
+          src={`http://localhost:5000/${props.slug_image}`}
         />
       </CardBody>
       <CardFooter className="py-1">
